@@ -6,11 +6,13 @@ import { render } from 'react-dom';
 
 import '../css/style.css'
 
+import Octocat from '../assets/octocat.png'
+
 export default class Howdy extends Component {
   render () {
     return (
       <div>
-        Hi from React!
+        <img src={Octocat} alt="Octocat"/>
       </div>
     )
   }

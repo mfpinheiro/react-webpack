@@ -43,7 +43,14 @@ module.exports = {
         loader: ExtactTextPlugin.extract({
           use: 'css-loader',
         }),
-      }
+      },
+      // File loader to image Assets - Add any extension that you want
+      {
+        test: /\.(png|jpg|gif|svg)$/,
+        use: [
+          'file-loader',
+        ]
+      },
     ],
   },
   // With this we can import files without the extension files
