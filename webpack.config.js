@@ -24,4 +24,20 @@ module.exports = {
   // devServer: {
   //   contentBase: paths.SRC,
   // },
+  // Use babel-loader for .js e .jsx
+  module: {
+    rules: [
+      {
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        use: [
+          'babel-loader',
+        ],
+      },
+    ],
+  },
+  // With this we can import files without the extension files
+  resolve: {
+    extensions: ['.js', '.jsx'],
+  },
 };
