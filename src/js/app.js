@@ -1,7 +1,19 @@
 /**
  * Created by mfpinheiro on 19/10/17.
  */
-console.log('Some cool code!');
+import React, { Component } from 'react';
+import { render } from 'react-dom';
 
-// Command to generate the bundle file
-// ./node_modules/webpack/bin/webpack.js ./src/js/app.js --output-filename ./dist/app.bundle.js
+import '../css/style.css'
+
+export default class Howdy extends Component {
+  render () {
+    return (
+      <div>
+        Hi from React!
+      </div>
+    )
+  }
+}
+
+render (<Howdy/>, document.getElementById('app'));

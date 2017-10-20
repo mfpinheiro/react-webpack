@@ -2,6 +2,7 @@
 const path = require('path');
 // plugin to handle html files
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ExtactTextPlugin = require('extract-text-webpack-plugin');
 // Constants to paths
 const paths = {
   DIST: path.resolve(__dirname, 'dist'),
@@ -20,13 +21,14 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: path.join(paths.SRC, 'index.html'),
     }),
+    new ExtactTextPlugin('style.bundle.css'),
   ],
   // devServer: {
   //   contentBase: paths.SRC,
   // },
-  // Use babel-loader for .js e .jsx
   module: {
     rules: [
+      // Use babel-loader for .js e .jsx
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
@@ -34,6 +36,14 @@ module.exports = {
           'babel-loader',
         ],
       },
+      // Files will get handled by css loader and then passed to the extractor
+      // wich will write in the file defined above
+      {
+        test: /\.css$/,
+        loader: ExtactTextPlugin.extract({
+          use: 'css-loader',
+        }),
+      }
     ],
   },
   // With this we can import files without the extension files
